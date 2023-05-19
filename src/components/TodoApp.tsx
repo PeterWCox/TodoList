@@ -6,10 +6,13 @@ import { Todos } from "./Todos/Todos";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
+import Checkbox from "@mui/material/Checkbox";
+import FormControlLabel from "@mui/material/FormControlLabel";
 
 export const TodoApp = () => {
   //States
   const [title, setTitle] = useState<string>("");
+  const [showCompletedTodos, setShowCompletedTodos] = useState<boolean>(true);
 
   //Redux
   const dispatch: any = useDispatch();
@@ -39,7 +42,25 @@ export const TodoApp = () => {
         <Typography variant="h2" gutterBottom>
           Todos
         </Typography>
+
+        <Typography variant="h5" gutterBottom>
+          You have {todos.filter((todo) => !todo.isCompleted).length} incomplete
+          tasks
+        </Typography>
       </section>
+
+      <FormControlLabel
+        control={
+          <Checkbox
+            defaultChecked
+            checked={showCompletedTodos}
+            onClick={() => {
+              setShowCompletedTodos(!showCompletedTodos);
+            }}
+          />
+        }
+        label="Show completed todos"
+      />
 
       {/* Add todo */}
       <section className="addTodo">
@@ -51,6 +72,9 @@ export const TodoApp = () => {
             placeholder="Add a todo"
             onChange={(value) => {
               setTitle(value.target.value);
+            }}
+            style={{
+              backgroundColor: "white",
             }}
           />
 
@@ -67,7 +91,7 @@ export const TodoApp = () => {
 
       <section className="todos">
         {/* Todos */}
-        <Todos />
+        <Todos showCompletedTodos={showCompletedTodos} />
       </section>
 
       {/* Tasks */}

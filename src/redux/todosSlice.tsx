@@ -32,10 +32,10 @@ export const todoSlice = createSlice({
 
       return state;
     },
-    updateTodo: (state, action: PayloadAction<number>) => {
+    updateTodo: (state, action: PayloadAction<ITodo>) => {
       state.todos = state.todos.map((todo) => {
-        if (todo.id === action.payload) {
-          todo.isCompleted = !todo.isCompleted;
+        if (todo.id === action.payload.id) {
+          todo = action.payload;
         }
         return todo;
       });
@@ -61,9 +61,9 @@ export function addTodo(title: string) {
   };
 }
 
-export function updateTodo_Single(id: number) {
+export function updateTodo_Single(todo: ITodo) {
   return async (dispatch: any) => {
-    dispatch(updateTodo(id));
+    dispatch(updateTodo(todo));
   };
 }
 

@@ -1,7 +1,6 @@
 .container {
   display: flex;
   flex-direction: column;
-  align-items: center;
   background-color: lightcyan;
   gap: 1rem;
 }
@@ -14,7 +13,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    // justify-content: space-between;
     gap: 1rem;
     width: 100%;
   }

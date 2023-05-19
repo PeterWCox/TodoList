@@ -3,7 +3,11 @@ import { TodoItem } from "../TodoItem/TodoItem";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { updateTodo_Multiple } from "../../redux/todosSlice";
 
-export const Todos = () => {
+export interface ITodosProps {
+  showCompletedTodos: boolean;
+}
+
+export const Todos = (props: ITodosProps) => {
   const { todos } = useSelector((state) => state.todos);
   const dispatch = useDispatch();
 
@@ -33,7 +37,10 @@ export const Todos = () => {
               gap: "0.25rem",
             }}
           >
-            {todos.map((todo, index) => (
+            {(props.showCompletedTodos
+              ? todos
+              : todos.filter((todo) => !todo.isCompleted)
+            ).map((todo, index) => (
               <Draggable
                 key={todo.id}
                 draggableId={todo.id.toString()}

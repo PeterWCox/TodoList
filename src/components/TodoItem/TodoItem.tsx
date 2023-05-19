@@ -26,7 +26,12 @@ export const TodoItem = (props: ITodoItemProps) => {
   //Handlers
   const handleCheckbox = (e) => {
     e.preventDefault();
-    dispatch(updateTodo_Single(props.todo.id));
+    dispatch(
+      updateTodo_Single({
+        ...props.todo,
+        isCompleted: !props.todo.isCompleted,
+      })
+    );
   };
 
   const handleDelete = (e) => {
@@ -41,7 +46,12 @@ export const TodoItem = (props: ITodoItemProps) => {
 
   const handleTextChange = (e) => {
     e.preventDefault();
-    dispatch(updateTodo_Single(props.todo.id));
+    dispatch(
+      updateTodo_Single({
+        ...props.todo,
+        title: title,
+      })
+    );
   };
 
   return (
@@ -65,9 +75,10 @@ export const TodoItem = (props: ITodoItemProps) => {
                   textDecoration: props.todo.isCompleted
                     ? "line-through"
                     : "none",
+                  fontWeight: props.todo.isCompleted ? "bold" : "normal",
                 }}
               >
-                {props.todo.title}
+                {title}
               </span>
             </Typography>
           ) : (
@@ -86,6 +97,12 @@ export const TodoItem = (props: ITodoItemProps) => {
                 fullWidth
                 onChange={(value) => {
                   setTitle(value.target.value);
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    handleTextChange(e);
+                    setIsEditMode(false);
+                  }
                 }}
               />
             </OutsideClickHandler>
