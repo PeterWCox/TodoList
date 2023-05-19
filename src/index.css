@@ -1,0 +1,31 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  color-scheme: light dark;
+}
+
+main {
+  padding: 0 2rem;
+  width: min(70ch, 100%-4rem);
+  margin-inline: auto;
+}
+
+body {
+  font-family: system-ui;
+  font-size: 1.125rem;
+  line-height: 1.5;
+}
+
+img,
+svg,
+video {
+  max-width: 100%;
+}
+
+li {
+  list-style: none;
+  margin: none;
+}

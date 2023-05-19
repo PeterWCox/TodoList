@@ -1,0 +1,25 @@
+.todoItem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  padding: 0.3em 0.7em;
+  justify-content: space-between;
+  background-color: #fff;
+}
+
+.start {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.end {
+}
+
+.checkbox {
+  padding: 0.7em 0.3em;
+}
+
+.start {
+}
