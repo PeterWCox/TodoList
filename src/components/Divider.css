@@ -1,0 +1,11 @@
+.Divider_horizontal {
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-grey-20);
+}
+
+.Divider_vertical {
+  width: 4px;
+  height: 100%;
+  background-color: var(--color-light-grey);
+}

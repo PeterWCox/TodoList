@@ -1,0 +1,96 @@
+.DataFilter {
+  display: flex;
+}
+
+.DataFilterContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.DataFilterContainer > .Button {
+  height: auto;
+  min-height: auto;
+  min-width: auto;
+  padding: 0;
+  font-size: var(--font-size-body2);
+  color: var(--color-coral);
+  align-self: flex-end;
+}
+
+.DataFilterContainer.slider {
+  height: 67px;
+}
+
+.DataFilterContainer.select {
+  height: 81px;
+}
+
+.DataFilterContainer.slider > .Button {
+  position: relative;
+  bottom: 67px;
+}
+
+.DataFilterContainer.select > .Button {
+  position: relative;
+  bottom: 81px;
+}
+
+.DataFilterContainer.autocomplete > .Button {
+  position: relative;
+  bottom: 81px;
+}
+
+.DataFilterCheckboxHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.DataFilterCheckboxHeader .TooltipChild {
+  margin-left: var(--spacing-s);
+}
+
+.DataFilterCheckboxHeader > .Button {
+  height: auto;
+  min-height: auto;
+  min-width: auto;
+  padding: 0;
+  font-size: var(--font-size-body2);
+  color: var(--color-coral);
+}
+
+.DataFilterFilters {
+  flex-shrink: 0;
+  width: 295px;
+  margin-right: var(--spacing-l);
+}
+
+.DataFilterFiltersHeader {
+  height: 20px;
+}
+
+.DataFilterFiltersHeaderClear {
+  text-align: right;
+}
+
+.DataFilterFiltersHeaderClear > .Button {
+  height: auto;
+  min-height: auto;
+  min-width: auto;
+  padding: 0;
+  font-size: var(--font-size-body2);
+  color: var(--color-coral);
+}
+
+.DataFilterFilters label {
+  font-size: var(--font-size-body2);
+}
+
+.DataFilterFilters .CheckboxWrapper {
+  margin-bottom: var(--spacing-xs);
+}
+
+.DataFilterContent {
+  flex-grow: 1;
+}
