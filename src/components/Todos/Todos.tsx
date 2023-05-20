@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { TodoItem } from "../TodoItem/TodoItem";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import { updateTodo_Multiple } from "../../redux/todosSlice";
+import { thunk_updateTodoMultiple } from "../../redux/todosSlice";
 
 export interface ITodosProps {
   showCompletedTodos: boolean;
@@ -21,7 +21,7 @@ export const Todos = (props: ITodosProps) => {
     const items = [...todos];
     const [reorderedItem] = items.splice(result.source.index, 1);
     items.splice(result.destination.index, 0, reorderedItem);
-    dispatch(updateTodo_Multiple(items));
+    dispatch(thunk_updateTodoMultiple(items));
   };
 
   return (
@@ -56,7 +56,7 @@ export const Todos = (props: ITodosProps) => {
                       snapshot.isDragging ? "selected" : "not-selected"
                     }
                   >
-                    <TodoItem key={todo.id} todo={todo} />
+                    <TodoItem key={`todo_${todo.id}`} todo={todo} />
                   </li>
                 )}
               </Draggable>

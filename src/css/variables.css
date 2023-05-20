@@ -1,0 +1,152 @@
+:root {
+  /* Colours */
+
+  /* Primary Colours */
+  --color-blue: #28245c;
+  --color-blue-rgb: 40, 36, 92;
+  --color-blue-80: #53507d;
+  --color-blue-60: #7e7c9d;
+  --color-blue-40: #a9a7be;
+  --color-blue-20: #d4d3de;
+  --color-coral: #ff865d;
+  --color-coral-80: #ff9e7d;
+  --color-coral-60: #ffb69e;
+  --color-coral-40: #ffcfbe;
+  --color-coral-20: #ffe7df;
+  --color-green: #78bb96;
+  --color-green-rgb: 120, 187, 150;
+  --color-green-80: #93c9ab;
+  --color-green-60: #aed6c0;
+  --color-green-40: #c9e4d5;
+  --color-green-20: #e4f1ea;
+  --color-yellow-dark: #d5b502;
+  --color-yellow-dark-80: #dec435;
+  --color-yellow: #fce359;
+  --color-yellow-80: #fde97a;
+  --color-yellow-60: #fdee9c;
+  --color-yellow-40: #fef4bd;
+  --color-yellow-20: #fefade;
+  --color-grey: #2c303b;
+  --color-grey-rgb: 44, 48, 59;
+  --color-grey-80: #565962;
+  --color-grey-60: #808389;
+  --color-grey-40: #abacb1;
+  --color-grey-20: #d5d6d8;
+
+  /* Interface colours */
+  --color-red: #d71f2a;
+  --color-red-80: #e3626a;
+  --color-red-60: #eb8f95;
+  --color-red-40: #f3bcbf;
+  --color-red-20: #fbe9ea;
+  --color-light-grey: #f5f5f8;
+  --color-white: #ffffff;
+  --color-pink: #dc72b8;
+  --color-pink-80: #e38ec6;
+  --color-pink-60: #eaabd4;
+  --color-pink-40: #f1c7e3;
+  --color-pink-20: #f8e3f1;
+  --color-purple: #a968d0;
+  --color-purple-80: #ba86da;
+  --color-purple-60: #cba4e3;
+  --color-purple-40: #dcc3ec;
+  --color-purple-20: #eee1f6;
+  --color-iblue: #6679da;
+  --color-iblue-80: #8594e1;
+  --color-iblue-60: #a3aee9;
+  --color-iblue-40: #c2c9f0;
+  --color-iblue-20: #e0e4f8;
+  --color-cyan: #69c1dd;
+  --color-cyan-80: #87cee4;
+  --color-cyan-60: #a5daeb;
+  --color-cyan-40: #c3e6f1;
+  --color-cyan-20: #e1f3f8;
+  --color-wizard-green: #547d66;
+  --color-wizard-light-green: #628772;
+  --color-wizard-light-grey: #3e414b;
+  --color-wizard-light-blue: #3a3669;
+  --color-banner-grey: rgba(var(--color-grey-rgb), 0.8);
+  --color-banner-green: rgba(var(--color-green-rgb), 0.8);
+
+  --color-box-shadow: rgba(var(--color-grey-rgb), 10%);
+  --box-shadow-spread: 20px;
+
+  /* Spacing */
+  --spacing-xxs: 2px;
+  --spacing-xs: 4px;
+  --spacing-s: 8px;
+  --spacing-sl: 12px;
+  --spacing-m: 16px;
+  --spacing-ml: 24px;
+  --spacing-l: 32px;
+  --spacing-ll: 40px;
+  --spacing-xl: 48px;
+  --spacing-2xl: 56px;
+  --spacing-3xl: 64px;
+  --spacing-4xl: 80px;
+  --spacing-5xl: 96px;
+
+  /* Font size */
+  --font-size-h1: 40px;
+  --font-size-h2: 24px;
+  --font-size-h3: 16px;
+  --font-size-h4: 12px;
+  --font-size-body0: 80px;
+  --font-size-body1: 16px;
+  --font-size-body2: 14px;
+  --font-size-body3: 12px;
+  --font-size-body4: 12px;
+
+  /* Line height */
+  --line-height-h1: 48px;
+  --line-height-h2: 28.8px;
+  --line-height-h3: 19.2px;
+  --line-height-h4: 14.4px;
+  --line-height-body0: 96px;
+  --line-height-body1: 19.2px;
+  --line-height-body2: 16.8px;
+  --line-height-body3: 14.4px;
+  --line-height-body4: 14.4px;
+
+  /* Font family */
+  --font-family-a: "Space Grotesk", sans-serif;
+  --font-family-h1: "aktiv-grotesk-extended", sans-serif;
+  --font-family-h2: "Space Grotesk", sans-serif;
+  --font-family-h3: "Space Grotesk", sans-serif;
+  --font-family-h4: "Space Grotesk", sans-serif;
+  --font-family-p: "Space Grotesk", sans-serif;
+  --font-family-body0: "aktiv-grotesk-extended", sans-serif;
+  --font-family-body1: "Space Grotesk", sans-serif;
+  --font-family-body2: "Space Grotesk", sans-serif;
+  --font-family-body3: "Space Grotesk", sans-serif;
+  --font-family-body4: "Space Grotesk", sans-serif;
+
+  --font-family-default: "Space Grotesk", sans-serif;
+  --font-family-default-w-apple: "Space Grotesk", -apple-system, sans-serif;
+
+  /* Tablet and mobile values (max width 1024px) */
+
+  /* Font size */
+  --font-size-h1-tablet: 32px;
+  --font-size-h2-tablet: 18px;
+  --font-size-h3-tablet: 14px;
+  --font-size-h4-tablet: 10px;
+  --font-size-p-tablet: 12px;
+  --font-size-body0-tablet: 64px;
+  --font-size-body1-tablet: 14px;
+  --font-size-body2-tablet: 12px;
+  --font-size-body3-tablet: 10px;
+  --font-size-body4-tablet: 10px;
+
+  /* Line height */
+  --line-height-h1-tablet: 38.4px;
+  --line-height-h2-tablet: 21.6px;
+  --line-height-h3-tablet: 16.8px;
+  --line-height-h4-tablet: 12px;
+  --line-height-p-tablet: 14.4px;
+  --line-height-body0-tablet: 76.8px;
+  --line-height-body1-tablet: 16.8px;
+  --line-height-body2-tablet: 14.4px;
+  --line-height-body3-tablet: 12px;
+  --line-height-body4-tablet: 12px;
+}

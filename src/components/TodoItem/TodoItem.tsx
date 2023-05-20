@@ -1,18 +1,21 @@
 import { useDispatch } from "react-redux";
-import { ITodo } from "../../models/Todo";
+import { Todo } from "../../models/Todo";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Typography from "@mui/material/Typography";
 import "./TodoItem.scss";
-import { deleteTodo, updateTodo_Single } from "../../redux/todosSlice";
+import {
+  thunk_deleteTodo,
+  thunk_updateTodoSingle,
+} from "../../redux/todosSlice";
 import { useState } from "react";
 import TextField from "@mui/material/TextField";
 import { Box } from "@mui/material";
 import OutsideClickHandler from "react-outside-click-handler";
 
 export interface ITodoItemProps {
-  todo: ITodo;
+  todo: Todo;
 }
 
 export const TodoItem = (props: ITodoItemProps) => {
@@ -27,7 +30,7 @@ export const TodoItem = (props: ITodoItemProps) => {
   const handleCheckbox = (e) => {
     e.preventDefault();
     dispatch(
-      updateTodo_Single({
+      thunk_updateTodoSingle({
         ...props.todo,
         isCompleted: !props.todo.isCompleted,
       })
@@ -36,7 +39,7 @@ export const TodoItem = (props: ITodoItemProps) => {
 
   const handleDelete = (e) => {
     e.preventDefault();
-    dispatch(deleteTodo(props.todo.id));
+    dispatch(thunk_deleteTodo(props.todo.id));
   };
 
   const handleTextClick = (e) => {
@@ -47,7 +50,7 @@ export const TodoItem = (props: ITodoItemProps) => {
   const handleTextChange = (e) => {
     e.preventDefault();
     dispatch(
-      updateTodo_Single({
+      thunk_updateTodoSingle({
         ...props.todo,
         title: title,
       })

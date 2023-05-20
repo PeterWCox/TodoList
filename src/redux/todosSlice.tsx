@@ -1,9 +1,8 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { TodoUtils } from "../utils/TodoUtils";
-import { ITodo } from "../models/Todo";
+import { Todo } from "../models/Todo";
 
 export interface TodoState {
-  todos: ITodo[];
+  todos: Todo[];
 }
 
 const initialState: TodoState = {
@@ -11,28 +10,24 @@ const initialState: TodoState = {
 };
 
 export const todoSlice = createSlice({
-  name: "todo",
+  name: "todos",
   initialState,
   reducers: {
-    add: (state, action: PayloadAction<string>) => {
-      const newId = TodoUtils.getNextId(state.todos);
-
+    addTodo: (state, action: PayloadAction<string>) => {
       state = {
         ...state,
         todos: [
           ...state.todos,
           {
-            id: newId,
+            id: state.todos.length > 0 ? state.todos.length + 1 : 1,
             title: action.payload,
             isCompleted: false,
           },
         ],
       };
       localStorage.setItem("todos", JSON.stringify(state.todos));
-
-      return state;
     },
-    updateTodo: (state, action: PayloadAction<ITodo>) => {
+    updateSingleTodo: (state, action: PayloadAction<Todo>) => {
       state.todos = state.todos.map((todo) => {
         if (todo.id === action.payload.id) {
           todo = action.payload;
@@ -41,41 +36,42 @@ export const todoSlice = createSlice({
       });
       localStorage.setItem("todos", JSON.stringify(state.todos));
     },
-    updateTodos: (state, action: PayloadAction<ITodo[]>) => {
+    updateMultipleTodos: (state, action: PayloadAction<Todo[]>) => {
       state.todos = action.payload;
       localStorage.setItem("todos", JSON.stringify(state.todos));
     },
-    remove: (state, action: PayloadAction<number>) => {
+    deleteTodo: (state, action: PayloadAction<number>) => {
       state.todos = state.todos.filter((todo) => todo.id !== action.payload);
       localStorage.setItem("todos", JSON.stringify(state.todos));
     },
   },
 });
 
-export const { add, remove, updateTodo, updateTodos } = todoSlice.actions;
+export const { addTodo, updateSingleTodo, updateMultipleTodos, deleteTodo } =
+  todoSlice.actions;
 
 //Thunks
-export function addTodo(title: string) {
+export function thunk_addTodo(title: string) {
   return async (dispatch: any) => {
-    dispatch(add(title));
+    dispatch(addTodo(title));
   };
 }
 
-export function updateTodo_Single(todo: ITodo) {
+export function thunk_updateTodoSingle(todo: Todo) {
   return async (dispatch: any) => {
-    dispatch(updateTodo(todo));
+    dispatch(updateSingleTodo(todo));
   };
 }
 
-export function updateTodo_Multiple(todos: ITodo[]) {
+export function thunk_updateTodoMultiple(todos: Todo[]) {
   return async (dispatch: any) => {
-    dispatch(updateTodos(todos));
+    dispatch(updateMultipleTodos(todos));
   };
 }
 
-export function deleteTodo(id: number) {
+export function thunk_deleteTodo(id: number) {
   return async (dispatch: any) => {
-    dispatch(remove(id));
+    dispatch(deleteTodo(id));
   };
 }
 
