@@ -1,6 +1,10 @@
+import { useState } from "react";
 import "./header.css";
+import { CtaLinks, NavbarLinks } from "./headerLinks";
 
 export const Header = () => {
+  const [showDropdown, setShowDropdown] = useState<boolean>(false);
+
   return (
     <section className="header-wrapper">
       <div className="header">
@@ -14,38 +18,29 @@ export const Header = () => {
         <div className="header-nav">
           {/* Navbar items */}
           <ul className="header-links">
-            <li className="header-link">
-              <a className="nav-link" href="/uk-nature-carbon/">
-                UK Nature Carbon
-              </a>
-            </li>
-            <li className="header-link">
-              <a className="nav-link" href="/seed/">
-                Seed
-              </a>
-            </li>
-            <li className="header-link">
-              <a className="nav-link" href="/about/">
-                About
-              </a>
-            </li>
-            <li className="header-link">
-              <a className="nav-link" href="/blog/">
-                Blog
-              </a>
-            </li>
+            {NavbarLinks.map((link) => (
+              <li key={link.title} className="header-link">
+                <a className="nav-link" href={link.link}>
+                  {link.title}
+                </a>
+              </li>
+            ))}
           </ul>
           {/* Get listed */}
-          <button className="get-listed">
-            <a href="/get-listed/">Get listed</a>
-          </button>
-          {/* Visit the directory */}
-          <button className="directory">
-            <a href="https://web.kana.earth/p/projects">Visit the directory</a>
-          </button>
+          {CtaLinks.map((link) => (
+            <button key={link.title} className="get-listed">
+              <a href={link.link}>{link.title}</a>
+            </button>
+          ))}
         </div>
         {/* Hamburger menu */}
-        <button className="links-bar" title="XXXX">
+        <button
+          className="links-bar"
+          title="XXXX"
+          onClick={() => {
+            setShowDropdown(true);
+          }}
+        >
           <img
             src="https://www.kana.earth/images/get-listed/svg/nav-bar.svg"
             alt=""
@@ -53,38 +48,32 @@ export const Header = () => {
         </button>
       </div>
       {/* Dropdown full-screen */}
-      <div className="links-dropdown">
-        <button className="close">
-          <img src="/images/get-listed/svg/close.svg" alt="close" />
+      <div className={`links-dropdown ${showDropdown ? "show" : null}`}>
+        <button
+          className="close"
+          onClick={() => {
+            setShowDropdown(false);
+          }}
+        >
+          <img
+            src="https://www.kana.earth/images/get-listed/svg/close.svg"
+            alt="close"
+          />
         </button>
         <ul className="header-links">
-          <li className="header-link">
-            <a className="nav-link" href="/uk-nature-carbon/">
-              UK Nature Carbon
-            </a>
-          </li>
-          <li className="header-link">
-            <a className="nav-link" href="/seed/">
-              Seed
-            </a>
-          </li>
-          <li className="header-link">
-            <a className="nav-link" href="/about/">
-              About
-            </a>
-          </li>
-          <li className="header-link">
-            <a className="nav-link" href="/blog/">
-              Blog
-            </a>
-          </li>
+          {NavbarLinks.map((link) => (
+            <li key={link.title} className="header-link">
+              <a className="nav-link" href={link.link}>
+                {link.title}
+              </a>
+            </li>
+          ))}
         </ul>
-        <button className="get-listed">
-          <a href="/get-listed/">Get listed</a>
-        </button>
-        <button className="directory">
-          <a href="https://web.kana.earth/p/projects">Visit the directory</a>
-        </button>
+        {CtaLinks.map((link) => (
+          <button key={link.title} className="get-listed">
+            <a href={link.link}>{link.title}</a>
+          </button>
+        ))}
       </div>
     </section>
   );
