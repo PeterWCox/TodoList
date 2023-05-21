@@ -76,11 +76,3 @@ export const FullWidth: Story = {
         isFullWidth: true,
     },
 }
-
-export const NoPadding: Story = {
-    args: {
-        text: 'Button',
-        type: 'primary',
-        size: 'medium',
-    },
-}

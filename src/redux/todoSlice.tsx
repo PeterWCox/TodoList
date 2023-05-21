@@ -19,7 +19,7 @@ export const todoSlice = createSlice({
                 ...state.todos,
                 {
                     id: state.todos.length > 0 ? state.todos.length + 1 : 1,
-                    title: action.payload,
+                    title: 'Example text',
                     isCompleted: false,
                 },
             ]

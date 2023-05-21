@@ -13,6 +13,7 @@ import StarBorderIcon from '@mui/icons-material/StarBorder'
 import OpenWithIcon from '@mui/icons-material/OpenWith'
 import { deleteTodo, updateSingleTodo } from '../../redux/todoSlice'
 import { useAppDispatch } from '../../redux/hooks'
+import { Searchbar } from '../../lib/Searchbar/Searchbar'
 
 export interface ITodoItemProps {
     todo: Todo
@@ -92,9 +93,7 @@ export const TodoItem = (props: ITodoItemProps) => {
                                     textDecoration: props.todo.isCompleted
                                         ? 'line-through'
                                         : 'none',
-                                    fontWeight: props.todo.isCompleted
-                                        ? 'bold'
-                                        : 'normal',
+                                    fontWeight: props.todo ? 'bold' : 'normal',
                                 }}
                             >
                                 {title}
@@ -108,20 +107,11 @@ export const TodoItem = (props: ITodoItemProps) => {
                                 }
                             }}
                         >
-                            <TextField
-                                id="outlined-basic"
-                                variant="outlined"
-                                placeholder="Add a todo"
+                            <Searchbar
                                 value={title}
-                                fullWidth
+                                placeholder={''}
                                 onChange={(value) => {
-                                    setTitle(value.target.value)
-                                }}
-                                onKeyDown={(e) => {
-                                    if (e.key === 'Enter') {
-                                        handleTextChange(e)
-                                        setIsEditMode(false)
-                                    }
+                                    setTitle(value)
                                 }}
                             />
                         </OutsideClickHandler>
@@ -140,7 +130,7 @@ export const TodoItem = (props: ITodoItemProps) => {
                 }}
             >
                 {/* Star Button */}
-                <div className="deleteButton">
+                {/* <div className="deleteButton">
                     {props.todo.isStarred ? (
                         <StarIcon
                             aria-label="favourite"
@@ -152,7 +142,7 @@ export const TodoItem = (props: ITodoItemProps) => {
                             onClick={handleStarredChange}
                         />
                     )}
-                </div>
+                </div> */}
 
                 {/* Move Button */}
                 <div className="deleteButton">
