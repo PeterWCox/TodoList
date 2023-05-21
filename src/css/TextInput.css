@@ -1,0 +1,28 @@
+.TextInput {
+  position: relative;
+}
+
+.TextInputLabelContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.TextInput_disabled label {
+  color: var(--color-grey-40);
+}
+
+.TextInput_disabled input {
+  background-color: var(--color-light-grey);
+}
+
+.TextInputIcon {
+  position: absolute;
+  right: 13px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.TextInput .Helper {
+  margin-top: var(--spacing-s);
+  color: var(--color-grey-40);
+}

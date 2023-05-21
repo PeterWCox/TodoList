@@ -1,0 +1,60 @@
+.Label {
+  display: flex;
+}
+
+.Label.Label-left,
+.Label.Label-right {
+  flex-direction: row;
+}
+
+.Label.Label-top,
+.Label.Label-bottom {
+  flex-direction: column;
+}
+
+.LabelValue {
+  display: flex;
+}
+
+.HtmlDiv {
+  display: inline-block;
+}
+
+.LabelValue-right {
+  justify-content: space-between;
+}
+
+.LabelValue-left {
+  gap: var(--spacing-s);
+}
+
+.Label.Label-right .LabelValue,
+.Label.Label-bottom .LabelValue {
+  order: 1;
+}
+
+.Label.Label-left .LabelValue,
+.Label.Label-right .LabelValue {
+  align-items: center;
+}
+
+.Label.Label-left .LabelValue {
+  margin-right: var(--spacing-s);
+}
+
+.Label.Label-right .LabelValue {
+  margin-left: var(--spacing-s);
+}
+
+.Label.Label-top .LabelValue {
+  margin-bottom: var(--spacing-s);
+}
+
+.Label.Label-bottom .LabelValue {
+  margin-top: var(--spacing-s);
+}
+
+.Label .LabelValue .Optional {
+  margin-left: var(--spacing-xs);
+  color: var(--color-grey-40);
+}

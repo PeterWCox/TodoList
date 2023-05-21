@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./header.css";
 import { Logo } from "./logo/logo";
 import { NavLinks } from "./navlinks/navlinks";
+import { Button } from "../../lib/Button/Button";
 
 export const Header = () => {
   return (
@@ -13,12 +14,12 @@ export const Header = () => {
         </div>
         {/* Button Links */}
         <div className="HeaderRightContent">
-          <button
-            className="Button Button_reversedPrimary Button_medium Button_content_medium"
-            type="button"
-          >
-            <span>Developer login</span>
-          </button>
+          <Button
+            text={"Developer Login"}
+            type={"tertiary"}
+            size={"medium"}
+            content={"medium"}
+          />
         </div>
       </div>
     </nav>

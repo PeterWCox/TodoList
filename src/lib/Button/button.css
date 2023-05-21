@@ -1,0 +1,313 @@
+.Button {
+  min-width: 160px;
+  cursor: pointer;
+  word-wrap: break-word;
+}
+
+.Button_fullWidth {
+  width: 100%;
+}
+
+.Button_primary {
+  color: var(--color-white);
+  background: var(--color-blue);
+  border: none;
+}
+
+.Button_primary:hover {
+  background: var(--color-blue-60);
+}
+
+.Button_primary:active {
+  background: var(--color-blue-80);
+}
+
+.Button_primary:focus-visible {
+  background-image: repeating-linear-gradient(
+      0deg,
+      var(--color-blue-20),
+      var(--color-blue-20) 4px,
+      transparent 4px,
+      transparent 9px,
+      var(--color-blue-20) 9px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      var(--color-blue-20),
+      var(--color-blue-20) 4px,
+      transparent 4px,
+      transparent 9px,
+      var(--color-blue-20) 9px
+    ),
+    repeating-linear-gradient(
+      180deg,
+      var(--color-blue-20),
+      var(--color-blue-20) 4px,
+      transparent 4px,
+      transparent 9px,
+      var(--color-blue-20) 9px
+    ),
+    repeating-linear-gradient(
+      270deg,
+      var(--color-blue-20),
+      var(--color-blue-20) 4px,
+      transparent 4px,
+      transparent 9px,
+      var(--color-blue-20) 9px
+    );
+  background-size: 2px 100%, 100% 2px, 2px 100%, 100% 2px;
+  background-position: 0 0, 0 0, 100% 0, 0 100%;
+  background-repeat: no-repeat;
+  outline: none;
+}
+
+.Button_reversedPrimary {
+  color: var(--color-blue);
+  background: var(--color-white);
+  border: none;
+}
+
+.Button_reversedPrimary:hover {
+  background: var(--color-white);
+  opacity: 0.8;
+}
+
+.Button_reversedPrimary:active {
+  background: var(--color-white);
+  opacity: 0.6;
+}
+
+.Button_reversedPrimary:focus-visible {
+  background-image: repeating-linear-gradient(
+      0deg,
+      var(--color-grey-40),
+      var(--color-grey-40) 4px,
+      transparent 4px,
+      transparent 9px,
+      var(--color-grey-40) 9px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      var(--color-grey-40),
+      var(--color-grey-40) 4px,
+      transparent 4px,
+      transparent 9px,
+      var(--color-grey-40) 9px
+    ),
+    repeating-linear-gradient(
+      180deg,
+      var(--color-grey-40),
+      var(--color-grey-40) 4px,
+      transparent 4px,
+      transparent 9px,
+      var(--color-grey-40) 9px
+    ),
+    repeating-linear-gradient(
+      270deg,
+      var(--color-grey-40),
+      var(--color-grey-40) 4px,
+      transparent 4px,
+      transparent 9px,
+      var(--color-grey-40) 9px
+    );
+  background-size: 2px 100%, 100% 2px, 2px 100%, 100% 2px;
+  background-position: 0 0, 0 0, 100% 0, 0 100%;
+  background-repeat: no-repeat;
+  outline: none;
+}
+
+.Button_secondary {
+  background: transparent;
+  color: var(--color-blue);
+  border: none;
+}
+
+.Button_secondary:not([disabled]):hover {
+  color: var(--color-blue-60);
+}
+
+.Button_secondary > span {
+  font-weight: 700;
+}
+
+.Button_secondary:active > span {
+  color: var(--color-blue-80);
+}
+
+.Button_secondary:focus-visible {
+  outline: none;
+}
+
+.Button_secondary:focus-visible > span {
+  background-image: repeating-linear-gradient(
+      0deg,
+      var(--color-blue-40),
+      var(--color-blue-40) 4px,
+      transparent 4px,
+      transparent 9px,
+      var(--color-blue-40) 9px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      var(--color-blue-40),
+      var(--color-blue-40) 4px,
+      transparent 4px,
+      transparent 9px,
+      var(--color-blue-40) 9px
+    ),
+    repeating-linear-gradient(
+      180deg,
+      var(--color-blue-40),
+      var(--color-blue-40) 4px,
+      transparent 4px,
+      transparent 9px,
+      var(--color-blue-40) 9px
+    ),
+    repeating-linear-gradient(
+      270deg,
+      var(--color-blue-40),
+      var(--color-blue-40) 4px,
+      transparent 4px,
+      transparent 9px,
+      var(--color-blue-40) 9px
+    );
+  background-size: 2px 100%, 100% 2px, 2px 100%, 100% 2px;
+  background-position: 0 0, 0 0, 100% 0, 0 100%;
+  background-repeat: no-repeat;
+}
+
+.Button_tertiary {
+  background: var(--color-blue-20);
+  color: var(--color-blue);
+  border: none;
+}
+
+.Button_tertiary:hover {
+  background: var(--color-blue-40);
+}
+
+.Button_tertiary:active {
+  background: var(--color-blue-60);
+}
+
+.Button_tertiary:focus-visible {
+  background-image: repeating-linear-gradient(
+      0deg,
+      var(--color-blue-40),
+      var(--color-blue-40) 4px,
+      transparent 4px,
+      transparent 9px,
+      var(--color-blue-40) 9px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      var(--color-blue-40),
+      var(--color-blue-40) 4px,
+      transparent 4px,
+      transparent 9px,
+      var(--color-blue-40) 9px
+    ),
+    repeating-linear-gradient(
+      180deg,
+      var(--color-blue-40),
+      var(--color-blue-40) 4px,
+      transparent 4px,
+      transparent 9px,
+      var(--color-blue-40) 9px
+    ),
+    repeating-linear-gradient(
+      270deg,
+      var(--color-blue-40),
+      var(--color-blue-40) 4px,
+      transparent 4px,
+      transparent 9px,
+      var(--color-blue-40) 9px
+    );
+  background-size: 2px 100%, 100% 2px, 2px 100%, 100% 2px;
+  background-position: 0 0, 0 0, 100% 0, 0 100%;
+  background-repeat: no-repeat;
+  outline: none;
+}
+
+.Button_small {
+  min-height: 44px;
+  height: calc(100% - 44px);
+  font-size: var(--font-size-body2);
+}
+
+.Button_medium {
+  min-height: 56px;
+  height: calc(100% - 56px);
+  font-size: var(--font-size-body1);
+}
+
+.Button_content_small {
+  padding: var(--spacing-sl) var(--spacing-ml) var(--spacing-sl)
+    var(--spacing-ml);
+}
+
+.Button_content_medium {
+  padding: var(--spacing-m) var(--spacing-l) var(--spacing-m) var(--spacing-l);
+}
+
+.Button_leftIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.Button_leftIcon svg {
+  padding-right: var(--spacing-s);
+}
+
+.Button_rightIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row-reverse;
+}
+
+.Button_rightIcon svg {
+  padding-left: var(--spacing-s);
+}
+
+.Button[disabled] {
+  background-color: var(--color-grey-80);
+  cursor: default;
+}
+
+.Button.ButtonNoPadding {
+  padding: 0 !important;
+}
+
+.Button.ButtonLoading {
+  cursor: default;
+}
+
+.Button_primary.ButtonLoading {
+  background-color: var(--color-grey-40);
+}
+
+.Button_reversedPrimary.ButtonLoading {
+  background-color: var(--color-white);
+}
+
+.Button_reversedPrimary.ButtonLoading:hover {
+  opacity: 1;
+}
+
+.Button_secondary.ButtonLoading {
+  background-color: var(--color-white);
+}
+
+.Button_tertiary.ButtonLoading {
+  background-color: var(--color-blue-20);
+}
+
+.Button.ButtonLoading > div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: var(--spacing-xs);
+}

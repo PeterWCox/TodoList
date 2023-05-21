@@ -1,0 +1,53 @@
+.form_field {
+  display: flex;
+  flex-direction: column;
+}
+
+.form_field ::placeholder {
+  color: var(--color-grey-40);
+}
+
+.form_field > div:first-child {
+  margin-bottom: var(--spacing-s);
+}
+
+.form_field > div label + span {
+  margin-left: var(--spacing-xs);
+  color: var(--color-grey-40);
+}
+
+.form_field input {
+  height: 50px;
+  line-height: 50px;
+  width: 100%;
+  border: 1px solid var(--color-grey-20);
+  padding-left: var(--spacing-m);
+  padding-right: var(--spacing-m);
+}
+
+/* TODO - See if this can be removed: Used for SingleFileUpload info label */
+.form_field > input ~ span:last-child {
+  margin-top: var(--spacing-s);
+  color: var(--color-grey-40);
+}
+
+/* TODO - See if this can be removed: See if this can be removed: Used for SingleFileUploadV2 info label */
+.form_field > .rc-upload ~ span:last-child {
+  margin-top: var(--spacing-s);
+  color: var(--color-grey-40);
+}
+
+body.using-mouse .form_field input:focus-visible,
+body.using-mouse .form_field textarea:focus-visible,
+body.using-mouse .DataGridHeaderFilter:focus-visible,
+body.using-mouse .rc-calendar:focus-visible {
+  outline: none;
+}
+
+.form_field input:focus-visible,
+.form_field textarea:focus-visible,
+.DataGridHeaderFilter:focus-visible,
+.rc-calendar:focus-visible {
+  outline: 1px dashed var(--color-grey-40);
+  outline-offset: var(--spacing-xs);
+}
