@@ -1,70 +1,76 @@
-import { useDispatch, useSelector } from "react-redux";
-import { TodoItem } from "../TodoItem/TodoItem";
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import { thunk_updateTodoMultiple } from "../../redux/todosSlice";
+import { TodoItem } from '../TodoItem/TodoItem'
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
+import { updateMultipleTodos } from '../../redux/todoSlice'
+import { useAppDispatch, useAppSelector } from '../../redux/hooks'
+import { Todo } from '../../models/Todo'
 
 export interface ITodosProps {
-  showCompletedTodos: boolean;
+    todos: Todo[]
 }
 
 export const Todos = (props: ITodosProps) => {
-  const { todos } = useSelector((state) => state.todos);
-  const dispatch = useDispatch();
-
-  const handleEnd = (result) => {
-    //If no destination, do nothing
-    if (!result.destination) {
-      return;
+    if (!props.todos) {
+        return null
     }
 
-    //Otherwise reorder the items
-    const items = [...todos];
-    const [reorderedItem] = items.splice(result.source.index, 1);
-    items.splice(result.destination.index, 0, reorderedItem);
-    dispatch(thunk_updateTodoMultiple(items));
-  };
+    const dispatch = useAppDispatch()
 
-  return (
-    <DragDropContext onDragEnd={handleEnd}>
-      <Droppable droppableId="to-dos">
-        {(provided) => (
-          <ul
-            {...provided.droppableProps}
-            ref={provided.innerRef}
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "0.25rem",
-            }}
-          >
-            {(props.showCompletedTodos
-              ? todos
-              : todos.filter((todo) => !todo.isCompleted)
-            ).map((todo, index) => (
-              <Draggable
-                key={todo.id}
-                draggableId={todo.id.toString()}
-                index={index}
-              >
-                {(provided, snapshot) => (
-                  <li
-                    {...provided.draggableProps}
-                    ref={provided.innerRef}
-                    {...provided.dragHandleProps}
-                    key={todo.id}
-                    className={
-                      snapshot.isDragging ? "selected" : "not-selected"
-                    }
-                  >
-                    <TodoItem key={`todo_${todo.id}`} todo={todo} />
-                  </li>
+    const handleEnd = (result) => {
+        //If no destination, do nothing
+        if (!result.destination) {
+            return
+        }
+
+        //Otherwise reorder the items
+        const items = [...props.todos]
+        const [reorderedItem] = items.splice(result.source.index, 1)
+        items.splice(result.destination.index, 0, reorderedItem)
+        dispatch(updateMultipleTodos(items))
+    }
+
+    return (
+        <DragDropContext onDragEnd={handleEnd}>
+            <Droppable droppableId="to-dos">
+                {(provided) => (
+                    <ul
+                        {...provided.droppableProps}
+                        ref={provided.innerRef}
+                        style={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            gap: '0.25rem',
+                        }}
+                    >
+                        {props.todos.map((todo, index) => (
+                            <Draggable
+                                key={todo.id}
+                                draggableId={todo.id.toString()}
+                                index={index}
+                            >
+                                {(provided, snapshot) => (
+                                    <li
+                                        {...provided.draggableProps}
+                                        ref={provided.innerRef}
+                                        {...provided.dragHandleProps}
+                                        key={todo.id}
+                                        className={
+                                            snapshot.isDragging
+                                                ? 'selected'
+                                                : 'not-selected'
+                                        }
+                                    >
+                                        <TodoItem
+                                            key={`todo_${todo.id}`}
+                                            todo={todo}
+                                        />
+                                    </li>
+                                )}
+                            </Draggable>
+                        ))}
+                        {provided.placeholder}
+                    </ul>
                 )}
-              </Draggable>
-            ))}
-            {provided.placeholder}
-          </ul>
-        )}
-      </Droppable>
-    </DragDropContext>
-  );
-};
+            </Droppable>
+        </DragDropContext>
+    )
+}

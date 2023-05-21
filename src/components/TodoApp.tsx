@@ -1,24 +1,43 @@
-import './global.css'
-import './PublicTemplate.css'
-import '../css/grid.css'
-import './DataFilter.css'
-import './ProjectsHeader.css'
-import './Divider.css'
-
 import { Searchbar } from '../lib/Searchbar/Searchbar'
 import { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { thunk_updateTodoMultiple } from '../redux/todosSlice'
-import './TodoApp.scss'
+import './TodoApp.css'
 import { Todos } from './Todos/Todos'
+import { addTodo, updateMultipleTodos } from '../redux/todoSlice'
+import { useAppDispatch, useAppSelector } from '../redux/hooks'
+import { StringUtils } from '../utils/StringUtils'
+import { Button } from '../lib/Button/Button'
 
 export const TodoApp = () => {
     //States
-    const [showCompletedTodos, setShowCompletedTodos] = useState<boolean>(true)
+    const [searchQuery, setSearchQuery] = useState('')
+    const [showCompletedTodos, setShowCompletedTodos] = useState(true)
 
-    //Redux
-    const dispatch: any = useDispatch()
-    const { todos } = useSelector((state) => state.todos)
+    //Hooks
+    const todos = useAppSelector((state) =>
+        searchQuery.trim() === ''
+            ? state.todos.todos.filter((todo) => !todo.isCompleted)
+            : state.todos.todos
+                  .filter((todo) => !todo.isCompleted)
+                  .filter((todo) =>
+                      todo.title
+                          .toLowerCase()
+                          .includes(searchQuery.toLowerCase())
+                  )
+    )
+
+    const completedTodos = useAppSelector((state) =>
+        searchQuery.trim() === ''
+            ? state.todos.todos.filter((todo) => todo.isCompleted)
+            : state.todos.todos
+                  .filter((todo) => todo.isCompleted)
+                  .filter((todo) =>
+                      todo.title
+                          .toLowerCase()
+                          .includes(searchQuery.toLowerCase())
+                  )
+    )
+
+    const dispatch = useAppDispatch()
 
     //Effects
     useEffect(() => {
@@ -26,9 +45,14 @@ export const TodoApp = () => {
         const todos = localStorage.getItem('todos')
 
         if (todos) {
-            dispatch(thunk_updateTodoMultiple(JSON.parse(todos)))
+            dispatch(updateMultipleTodos(JSON.parse(todos)))
         }
     }, [])
+
+    //Handlers
+    const handleSearch = (value) => {
+        setSearchQuery(value)
+    }
 
     return (
         <div className="PublicTemplate">
@@ -75,19 +99,60 @@ export const TodoApp = () => {
                         <div className="Row Row_spacing_l">
                             <div className="Column Column_span_12">
                                 <div className="DataFilterContainer">
-                                    <Searchbar />
+                                    <Searchbar
+                                        value={searchQuery}
+                                        placeholder={'Search todos'}
+                                        onChange={handleSearch}
+                                    />
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div className="DataFilterContent">
-                        {/* Todos Left  */}
-                        <div className="ProjectsSearchContentHeader">
-                            {/* <h3>{esults</h3> */}
+                        {/* Todos */}
+                        <div className="Row Row_spacing_l">
+                            <div className="Column Column_span_12">
+                                <div className="DataFilterContainer">
+                                    {/* Counter */}
+                                    <h3>{`You have ${
+                                        todos.length
+                                    } ${StringUtils.getSingularOrPlural(
+                                        todos.length,
+                                        'task',
+                                        'tasks'
+                                    )} to complete`}</h3>
+
+                                    {/* Todos */}
+                                    <Todos todos={todos} />
+
+                                    {/* Create todo */}
+                                    <div className="Row Row_spacing_l Justify_center">
+                                        <div className="Column Column_span_12">
+                                            <Button
+                                                text={'Add todo'}
+                                                type={'primary'}
+                                                size={'small'}
+                                                onClick={() => {
+                                                    dispatch(addTodo())
+                                                }}
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
-                        {/* Todos */}
-                        <Todos showCompletedTodos={showCompletedTodos} />
+                        {/* Completed */}
+                        {showCompletedTodos ? (
+                            <div className="Row Row_spacing_l">
+                                <div className="Column Column_span_12">
+                                    <div className="DataFilterContainer">
+                                        <h3>Completed</h3>
+                                        <Todos todos={completedTodos} />
+                                    </div>
+                                </div>
+                            </div>
+                        ) : null}
                     </div>
                 </div>
             </div>

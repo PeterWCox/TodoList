@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './header.css'
 import { Logo } from './logo/logo'
-import { NavLinks } from './navlinks/navlinks'
+import { NavLinks } from './NavLinks/NavLinks'
 import { SocialIcon } from 'react-social-icons'
 import Hamburger from 'hamburger-react'
 

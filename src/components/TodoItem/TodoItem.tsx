@@ -1,14 +1,9 @@
-import { useDispatch } from 'react-redux'
 import { Todo } from '../../models/Todo'
 import CheckBoxIcon from '@mui/icons-material/CheckBox'
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank'
 import DeleteIcon from '@mui/icons-material/Delete'
 import Typography from '@mui/material/Typography'
 import './TodoItem.scss'
-import {
-    thunk_deleteTodo,
-    thunk_updateTodoSingle,
-} from '../../redux/todosSlice'
 import { useState } from 'react'
 import TextField from '@mui/material/TextField'
 import { Box } from '@mui/material'
@@ -16,6 +11,8 @@ import OutsideClickHandler from 'react-outside-click-handler'
 import StarIcon from '@mui/icons-material/Star'
 import StarBorderIcon from '@mui/icons-material/StarBorder'
 import OpenWithIcon from '@mui/icons-material/OpenWith'
+import { deleteTodo, updateSingleTodo } from '../../redux/todoSlice'
+import { useAppDispatch } from '../../redux/hooks'
 
 export interface ITodoItemProps {
     todo: Todo
@@ -27,13 +24,13 @@ export const TodoItem = (props: ITodoItemProps) => {
     const [isEditMode, setIsEditMode] = useState<boolean>(false)
 
     //Redux
-    const dispatch: any = useDispatch()
+    const dispatch = useAppDispatch()
 
     //Handlers
     const handleCheckbox = (e) => {
         e.preventDefault()
         dispatch(
-            thunk_updateTodoSingle({
+            updateSingleTodo({
                 ...props.todo,
                 isCompleted: !props.todo.isCompleted,
             })
@@ -42,7 +39,7 @@ export const TodoItem = (props: ITodoItemProps) => {
 
     const handleDelete = (e) => {
         e.preventDefault()
-        dispatch(thunk_deleteTodo(props.todo.id))
+        dispatch(deleteTodo(props.todo.id))
     }
 
     const handleTextClick = (e) => {
@@ -53,7 +50,7 @@ export const TodoItem = (props: ITodoItemProps) => {
     const handleTextChange = (e) => {
         e.preventDefault()
         dispatch(
-            thunk_updateTodoSingle({
+            updateSingleTodo({
                 ...props.todo,
                 title: title,
             })
@@ -63,7 +60,7 @@ export const TodoItem = (props: ITodoItemProps) => {
     const handleStarredChange = (e) => {
         e.preventDefault()
         dispatch(
-            thunk_updateTodoSingle({
+            updateSingleTodo({
                 ...props.todo,
                 title: title,
             })
