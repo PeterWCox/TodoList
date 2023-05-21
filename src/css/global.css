@@ -1,14 +1,14 @@
-@import "normalize.css";
-@import "variables.css";
-@import "typography.css";
+@import 'normalize.css';
+@import 'variables.css';
+@import 'typography.css';
 
 html,
 body,
 #root,
 .container {
-  width: 100%;
-  min-height: 100vh;
-  background-color: var(--color-white);
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--color-white);
 }
 
 html,
@@ -16,32 +16,32 @@ body,
 #root,
 input,
 button {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  font-family: var(--font-family-default-w-apple);
-  font-weight: 400;
-  font-size: var(--font-size-body1);
-  color: var(--color-grey);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  /* TODO NCU temporary; to help illustrate main content width currently */
-  background-color: #f6f6f6;
+    font-family: var(--font-family-default-w-apple);
+    font-weight: 400;
+    font-size: var(--font-size-body1);
+    color: var(--color-grey);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #f6f6f6;
+}
+
+ul,
+ol {
+    list-style: none;
 }
 
 button {
-  font: inherit;
+    font: inherit;
 }
 
 .container {
-  overflow: hidden; /* used to make the menu bar fixed */
-  display: flex;
-  background-color: #f5f5f8;
-}
-
-.overflow-hidden {
-  /* overflow: hidden; */
+    overflow: hidden; /* used to make the menu bar fixed */
+    display: flex;
+    background-color: #f5f5f8;
 }

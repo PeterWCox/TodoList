@@ -1,120 +1,96 @@
-import "./global.css";
-import "./PublicTemplate.css";
-import "../css/grid.css";
-import "./DataFilter.css";
-import "./ProjectsHeader.css";
-import "./Divider.css";
+import './global.css'
+import './PublicTemplate.css'
+import '../css/grid.css'
+import './DataFilter.css'
+import './ProjectsHeader.css'
+import './Divider.css'
 
-import { Searchbar } from "../lib/Searchbar/Searchbar";
-import { MultiCheckbox } from "../lib/Checkbox/MultiCheckbox";
-import { Dropdown } from "../lib/Dropdown/Dropdown";
-import { Button } from "../lib/Button/Button";
+import { Searchbar } from '../lib/Searchbar/Searchbar'
+import { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { thunk_updateTodoMultiple } from '../redux/todosSlice'
+import './TodoApp.scss'
+import { Todos } from './Todos/Todos'
 
 export const TodoApp = () => {
-  return (
-    <div className="PublicTemplate">
-      <div className="PublicTemplateContent">
-        {/* Header */}
-        <div className="Row Row_spacing_2xl">
-          <div className="Column Column_span_12 ProjectsHeader">
-            <h1>Projects</h1>
-            <div className="body1">
-              Browse the list of UK nature-based carbon projects and learn more
-              about the positive impact they are making
-            </div>
-          </div>
-        </div>
-        {/* Spacer */}
-        <div className="Row Row_spacing_ll">
-          <div className="Column Column_span_12">
-            <div className=" Divider_horizontal"></div>
-          </div>
-        </div>
-        {/* Filters + Contnt */}
-        <div className="DataFilter">
-          {/* Filters Panel */}
-          <div className="DataFilterFilters">
-            {/* Header */}
-            <div className="Row Row_spacing_ml Justify_between Align_center DataFilterFiltersHeader">
-              {/* Filter Label */}
-              <div className="Column Column_span_6">
-                <h3>Filter</h3>
-              </div>
+    //States
+    const [showCompletedTodos, setShowCompletedTodos] = useState<boolean>(true)
 
-              {/* Clear filters */}
-              <div className="Column Column_span_6 DataFilterFiltersHeaderClear">
-                <button
-                  className="Button Button_secondary Button_medium Button_content_medium"
-                  type="button"
-                >
-                  <span>Clear all</span>
-                </button>
-              </div>
-            </div>
+    //Redux
+    const dispatch: any = useDispatch()
+    const { todos } = useSelector((state) => state.todos)
 
-            {/* Searchbar */}
-            <div className="Row Row_spacing_l">
-              <div className="Column Column_span_12">
-                <div className="DataFilterContainer">
-                  <Searchbar />
+    //Effects
+    useEffect(() => {
+        //On init, try and get todos from local storage
+        const todos = localStorage.getItem('todos')
+
+        if (todos) {
+            dispatch(thunk_updateTodoMultiple(JSON.parse(todos)))
+        }
+    }, [])
+
+    return (
+        <div className="PublicTemplate">
+            <div className="PublicTemplateContent">
+                {/* Header */}
+                <div className="Row Row_spacing_2xl">
+                    <div className="Column Column_span_12 ProjectsHeader">
+                        {/* Title */}
+                        <h1>Todo List</h1>
+
+                        {/* Blurb */}
+                        <h2>Start your day off right!</h2>
+                    </div>
                 </div>
-              </div>
-            </div>
-
-            {/* Multi checkbox */}
-            <div className="Row Row_spacing_l">
-              <div className="Column Column_span_12">
-                <div className="DataFilterContainer">
-                  <MultiCheckbox
-                    label="Codes and Standards"
-                    options={["Peatland Code", "Woodland Carbon Code"]}
-                  />
+                {/* Spacer */}
+                <div className="Row Row_spacing_ll">
+                    <div className="Column Column_span_12">
+                        <div className=" Divider_horizontal"></div>
+                    </div>
                 </div>
-              </div>
-            </div>
+                {/* Filters + Contnt */}
+                <div className="DataFilter">
+                    {/* Filters Panel */}
+                    <div className="DataFilterFilters">
+                        {/* Header */}
+                        <div className="Row Row_spacing_ml Justify_between Align_center DataFilterFiltersHeader">
+                            {/* Filter Label */}
+                            <div className="Column Column_span_6">
+                                <h3>Filter</h3>
+                            </div>
 
-            {/* Dropdown */}
-            <div className="Row Row_spacing_l">
-              <div className="Column Column_span_12">
-                <div className="DataFilterContainer">
-                  <Dropdown
-                    label="Codes and Standards"
-                    options={["Peatland Code", "Woodland Carbon Code"]}
-                  />
+                            {/* Clear filters */}
+                            <div className="Column Column_span_6 DataFilterFiltersHeaderClear">
+                                <button
+                                    className="Button Button_secondary Button_medium Button_content_medium"
+                                    type="button"
+                                >
+                                    <span>Clear all</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        {/* Searchbar */}
+                        <div className="Row Row_spacing_l">
+                            <div className="Column Column_span_12">
+                                <div className="DataFilterContainer">
+                                    <Searchbar />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="DataFilterContent">
+                        {/* Todos Left  */}
+                        <div className="ProjectsSearchContentHeader">
+                            {/* <h3>{esults</h3> */}
+                        </div>
+
+                        {/* Todos */}
+                        <Todos showCompletedTodos={showCompletedTodos} />
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
-          <div className="DataFilterContent">
-            <div>
-              <Button
-                text={"Developer Login"}
-                type={"primary"}
-                size={"medium"}
-                content={"medium"}
-              />
-              <Button
-                text={"Developer Login"}
-                type={"secondary"}
-                size={"medium"}
-                content={"medium"}
-              />
-              <Button
-                text={"Developer Login"}
-                type={"tertiary"}
-                size={"medium"}
-                content={"medium"}
-              />
-              <Button
-                text={"Developer Login"}
-                type={"reversedPrimary"}
-                size={"medium"}
-                content={"medium"}
-              />
-            </div>
-          </div>
         </div>
-      </div>
-    </div>
-  );
-};
+    )
+}

@@ -277,10 +277,6 @@
   cursor: default;
 }
 
-.Button.ButtonNoPadding {
-  padding: 0 !important;
-}
-
 .Button.ButtonLoading {
   cursor: default;
 }

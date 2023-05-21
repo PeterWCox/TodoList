@@ -5,16 +5,13 @@ export interface IButtonProps {
   text: string;
   type: ButtonTheme;
   size: ButtonSize;
-  content: ButtonContent;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   disabled?: boolean;
   isFullWidth?: boolean;
   loading?: boolean;
-  noPadding?: boolean;
 }
 
-export type ButtonSize = "small" | "medium" | "large";
-export type ButtonContent = "small" | "medium";
+export type ButtonSize = "small" | "medium";
 export type ButtonTheme =
   | "primary"
   | "secondary"
@@ -31,22 +28,10 @@ export const Button = (props: IButtonProps) => {
   switch (props.size) {
     case "small":
       classes.push("Button_small");
-      break;
-    case "medium":
-      classes.push("Button_medium");
-      break;
-    case "large":
-      classes.push("Button_large");
-      break;
-    default:
-      break;
-  }
-
-  switch (props.content) {
-    case "small":
       classes.push("Button_content_small");
       break;
     case "medium":
+      classes.push("Button_medium");
       classes.push("Button_content_medium");
       break;
     default:
@@ -72,10 +57,6 @@ export const Button = (props: IButtonProps) => {
 
   if (props.loading) {
     classes.push("ButtonLoading");
-  }
-
-  if (props.noPadding) {
-    classes.push("ButtonNoPadding");
   }
 
   return (

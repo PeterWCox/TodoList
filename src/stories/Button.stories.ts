@@ -1,46 +1,90 @@
 import type { Meta, StoryObj } from '@storybook/react';
-
-import { Button } from './Button';
+import { Button } from '../lib/Button/Button';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta: Meta<typeof Button> = {
-  title: 'Example/Button',
+  title: 'lib/Button',
   component: Button,
-  tags: ['autodocs'],
   argTypes: {
-    backgroundColor: {
-      control: 'color',
-    },
+   
   },
 };
 
 export default meta;
 type Story = StoryObj<typeof Button>;
 
-// More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Primary: Story = {
   args: {
-    primary: true,
-    label: 'Button',
+    text: "Button",
+    type: "primary",
+    size: "medium",
   },
 };
 
 export const Secondary: Story = {
   args: {
-    label: 'Button',
+    text: "Button",
+    type: "secondary",
+    size: "medium",
   },
 };
 
-export const Large: Story = {
+export const Tertiary: Story = {
   args: {
-    size: 'large',
-    label: 'Button',
+    text: "Button",
+    type: "tertiary",
+    size: "medium",
+  },
+};
+
+export const ReversedPrimary: Story = {
+  args: {
+    text: "Button",
+    type: "reversedPrimary",
+    size: "medium",
+  },
+};
+
+export const Medium: Story = {
+  args: {
+    text: "Button",
+    type: "primary",
+    size: "medium",
   },
 };
 
 export const Small: Story = {
   args: {
-    size: 'small',
-    label: 'Button',
+    text: "Button",
+    type: "primary",
+    size: "small",
   },
 };
+
+export const Disabled: Story = {
+  args: {
+    text: "Button",
+    type: "primary",
+    size: "medium",
+    disabled: true,
+  },
+};
+
+export const FullWidth: Story = {
+  args: {
+    text: "Button",
+    type: "primary",
+    size: "medium",
+    isFullWidth: true,
+  },
+};
+
+export const NoPadding: Story = {
+  args: {
+    text: "Button",
+    type: "primary",
+    size: "medium",
+    noPadding: true,
+  },
+};
+
