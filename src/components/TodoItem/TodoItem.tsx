@@ -2,18 +2,20 @@ import { Todo } from '../../models/Todo'
 import CheckBoxIcon from '@mui/icons-material/CheckBox'
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank'
 import DeleteIcon from '@mui/icons-material/Delete'
-import Typography from '@mui/material/Typography'
 import './TodoItem.scss'
 import { useState } from 'react'
-import TextField from '@mui/material/TextField'
 import { Box } from '@mui/material'
 import OutsideClickHandler from 'react-outside-click-handler'
-import StarIcon from '@mui/icons-material/Star'
-import StarBorderIcon from '@mui/icons-material/StarBorder'
 import OpenWithIcon from '@mui/icons-material/OpenWith'
-import { deleteTodo, updateSingleTodo } from '../../redux/todoSlice'
+import {
+    deleteTodo,
+    toggleStatus,
+    updateSingleTodo,
+} from '../../redux/todoSlice'
 import { useAppDispatch } from '../../redux/hooks'
 import { Searchbar } from '../../lib/Searchbar/Searchbar'
+import StarIcon from '@mui/icons-material/Star'
+import StarBorderIcon from '@mui/icons-material/StarBorder'
 
 export interface ITodoItemProps {
     todo: Todo
@@ -28,28 +30,11 @@ export const TodoItem = (props: ITodoItemProps) => {
     const dispatch = useAppDispatch()
 
     //Handlers
-    const handleCheckbox = (e) => {
-        e.preventDefault()
-        dispatch(
-            updateSingleTodo({
-                ...props.todo,
-                isCompleted: !props.todo.isCompleted,
-            })
-        )
-    }
-
-    const handleDelete = (e) => {
-        e.preventDefault()
-        dispatch(deleteTodo(props.todo.id))
-    }
-
-    const handleTextClick = (e) => {
-        e.preventDefault()
-        setIsEditMode(true)
-    }
+    const handleCheckbox = () => dispatch(toggleStatus(props.todo.id))
+    const handleDelete = () => dispatch(deleteTodo(props.todo.id))
+    const handleTextClick = () => setIsEditMode(true)
 
     const handleTextChange = (e) => {
-        e.preventDefault()
         dispatch(
             updateSingleTodo({
                 ...props.todo,
@@ -57,20 +42,23 @@ export const TodoItem = (props: ITodoItemProps) => {
             })
         )
     }
-
-    const handleStarredChange = (e) => {
-        e.preventDefault()
+    const handleStarredChange = () => {
         dispatch(
             updateSingleTodo({
                 ...props.todo,
-                title: title,
+                isStarred: !props.todo.isStarred,
             })
         )
     }
 
     return (
         <Box className="todoItem" sx={{ boxShadow: 1 }}>
-            <div className="start">
+            <div
+                className="start"
+                style={{
+                    width: '100%',
+                }}
+            >
                 {/* Checkbox */}
                 <div className="checkbox" onClick={handleCheckbox}>
                     {props.todo.isCompleted ? (
@@ -81,13 +69,13 @@ export const TodoItem = (props: ITodoItemProps) => {
                 </div>
 
                 {/* Text */}
-                <div>
+                <div
+                    style={{
+                        minWidth: '100%',
+                    }}
+                >
                     {!isEditMode ? (
-                        <Typography
-                            variant="body1"
-                            gutterBottom
-                            onClick={handleTextClick}
-                        >
+                        <h3 onClick={handleTextClick}>
                             <span
                                 style={{
                                     textDecoration: props.todo.isCompleted
@@ -98,7 +86,7 @@ export const TodoItem = (props: ITodoItemProps) => {
                             >
                                 {title}
                             </span>
-                        </Typography>
+                        </h3>
                     ) : (
                         <OutsideClickHandler
                             onOutsideClick={() => {
@@ -130,11 +118,14 @@ export const TodoItem = (props: ITodoItemProps) => {
                 }}
             >
                 {/* Star Button */}
-                {/* <div className="deleteButton">
+                <div className="favoriteButton">
                     {props.todo.isStarred ? (
                         <StarIcon
                             aria-label="favourite"
                             onClick={handleStarredChange}
+                            style={{
+                                fill: 'gold',
+                            }}
                         />
                     ) : (
                         <StarBorderIcon
@@ -142,7 +133,7 @@ export const TodoItem = (props: ITodoItemProps) => {
                             onClick={handleStarredChange}
                         />
                     )}
-                </div> */}
+                </div>
 
                 {/* Move Button */}
                 <div className="deleteButton">

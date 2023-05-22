@@ -3,6 +3,7 @@ import { useState } from 'react'
 export interface IMultiCheckboxProps {
     label: string
     options: string[]
+    values: string[]
 }
 
 export const MultiCheckbox = (props: IMultiCheckboxProps) => {

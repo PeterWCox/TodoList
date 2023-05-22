@@ -1,6 +1,6 @@
 import '../../css/FormLabel.css'
 import '../../css/TextInput.css'
-import '../../css/Forms.css'
+import '../../css/forms.css'
 import { useState } from 'react'
 
 export interface ISearchbarProps {

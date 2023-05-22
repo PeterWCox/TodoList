@@ -1,17 +1,18 @@
-import { Searchbar } from '../lib/Searchbar/Searchbar'
 import { useEffect, useState } from 'react'
-import './TodoApp.css'
-import { Todos } from './Todos/Todos'
+import { StringParam, useQueryParam } from 'use-query-params'
+import { Button } from '../lib/Button/Button'
+import { Divider } from '../lib/Divider/Divider'
+import { Searchbar } from '../lib/Searchbar/Searchbar'
+import { useAppDispatch, useAppSelector } from '../redux/hooks'
 import {
     addExampleTodos,
     addTodo,
-    updateMultipleTodos,
+    loadTodos,
+    sortAlphabetically,
 } from '../redux/todoSlice'
-import { useAppDispatch, useAppSelector } from '../redux/hooks'
-import { StringUtils } from '../utils/StringUtils'
-import { Button } from '../lib/Button/Button'
 import { TodoUtils } from '../utils/TodoUtils'
-import { StringParam, useQueryParam } from 'use-query-params'
+import './TodoApp.css'
+import { Todos } from './Todos/Todos'
 
 export const TodoApp = () => {
     //QP's
@@ -35,26 +36,21 @@ export const TodoApp = () => {
     //Effects
     useEffect(() => {
         //On init, try and get todos from local storage
-        const todos = localStorage.getItem('todos')
-
-        if (todos) {
-            dispatch(updateMultipleTodos(JSON.parse(todos)))
-        }
+        dispatch(loadTodos())
     }, [])
 
     //Handlers
     const handleSearch = (value) => setSearchQuery(value)
     const handleExampleTodos = () => dispatch(addExampleTodos())
-    const handleClearFilters = () => {
-        setSearchQuery('')
-    }
+    const handleSortAlphabetically = () => dispatch(sortAlphabetically())
+    const handleClearFilters = () => setSearchQuery('')
 
     return (
-        <div className="PublicTemplate">
-            <div className="PublicTemplateContent">
+        <div className="Todo">
+            <div className="TodoContent">
                 {/* Header */}
                 <div className="Row Row_spacing_2xl">
-                    <div className="Column Column_span_12 ProjectsHeader">
+                    <div className="Column Column_span_12 TodoHeader">
                         {/* Title */}
                         <h1>Todo List</h1>
 
@@ -76,7 +72,7 @@ export const TodoApp = () => {
                 {/* Spacer */}
                 <div className="Row Row_spacing_ll">
                     <div className="Column Column_span_12">
-                        <div className=" Divider_horizontal"></div>
+                        <Divider />
                     </div>
                 </div>
 
@@ -95,6 +91,7 @@ export const TodoApp = () => {
                                 <button
                                     className="Button Button_secondary Button_medium Button_content_medium"
                                     type="button"
+                                    onClick={handleClearFilters}
                                 >
                                     <span>Clear all</span>
                                 </button>
@@ -121,27 +118,23 @@ export const TodoApp = () => {
                                 <div className="DataFilterContainer">
                                     <div className="Row Row_spacing_l Justify_between Align_center">
                                         {/* Counter */}
-                                        <h3>{`You have ${
+                                        {/* <h3>{`You have ${
                                             todos.length
                                         } ${StringUtils.getSingularOrPlural(
                                             todos.length,
                                             'task'
-                                        )} to complete`}</h3>
+                                        )} to complete`}</h3> */}
 
                                         <Button
                                             text={'Sort A-Z'}
-                                            onClick={() =>
-                                                setShowCompletedTodos(
-                                                    !showCompletedTodos
-                                                )
-                                            }
+                                            onClick={handleSortAlphabetically}
                                             type={'primary'}
                                             size={'small'}
                                         />
                                     </div>
 
                                     {/* Todos */}
-                                    <Todos todos={todos} />
+                                    <Todos todos={todos} type="todos" />
 
                                     {/* Create todo */}
                                     <div className="Row Row_spacing_l Justify_center">
@@ -166,7 +159,10 @@ export const TodoApp = () => {
                                 <div className="Column Column_span_12">
                                     <div className="DataFilterContainer">
                                         <h3>Completed</h3>
-                                        <Todos todos={completedTodos} />
+                                        <Todos
+                                            todos={completedTodos}
+                                            type="completedTodos"
+                                        />
                                     </div>
                                 </div>
                             </div>

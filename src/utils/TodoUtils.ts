@@ -1,23 +1,14 @@
-import { Todo, TodoTag } from "../models/Todo";
+import { Todo } from '../models/Todo'
 
 export class TodoUtils {
-  public static getNextTodoId(todos: Todo[]): number {
-    if (todos.length === 0) {
-      return 1;
+    public static getTodosFilteredBySearchterm(
+        todos: Todo[],
+        searchTerm: string
+    ): Todo[] {
+        if (!searchTerm) return todos
+
+        return todos.filter((todo: Todo) => {
+            return todo.title?.toLowerCase()?.includes(searchTerm.toLowerCase())
+        })
     }
-
-    const Ids = todos.map((todo) => todo.id);
-    const maxId = Math.max(...Ids);
-    return maxId + 1;
-  }
-
-  public static getNextTodoTagId(todoTags: TodoTag[]): number {
-    if (todoTags.length === 0) {
-      return 1;
-    }
-
-    const Ids = todoTags.map((todoTag) => todoTag.id);
-    const maxId = Math.max(...Ids);
-    return maxId + 1;
-  }
 }

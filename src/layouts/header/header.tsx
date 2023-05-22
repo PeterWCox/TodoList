@@ -1,18 +1,15 @@
-import { useState } from 'react'
 import './header.css'
-import { Logo } from './logo/logo'
 import { NavLinks } from './NavLinks/NavLinks'
 import { SocialIcon } from 'react-social-icons'
-import Hamburger from 'hamburger-react'
 
 export const Header = () => {
-    const [isOpen, setOpen] = useState(false)
-
     return (
         <nav className="HeaderNavigation">
             <div className="HeaderContainer">
                 <div className="HeaderLeftContent">
-                    <h1>To.do</h1>
+                    <a href="/">
+                        <h1>To.do</h1>
+                    </a>
                     <NavLinks />
                 </div>
                 {/* Button Links */}

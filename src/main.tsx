@@ -7,6 +7,7 @@ import { Header } from './layouts/header/Header'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { QueryParamProvider } from 'use-query-params'
 import { ReactRouter6Adapter } from 'use-query-params/adapters/react-router-6'
+import { AboutApp } from './components/About/AboutApp'
 
 const element = document.getElementById('root') as HTMLElement
 const root = ReactDOM.createRoot(element)
@@ -18,6 +19,7 @@ root.render(
                 <Header />
                 <Routes>
                     <Route path="/" element={<TodoApp />} />
+                    <Route path="/about" element={<AboutApp />} />
                 </Routes>
             </Provider>
         </QueryParamProvider>

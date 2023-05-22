@@ -1,4 +1,4 @@
-@import "variables.css";
+@import 'variables.css';
 
 a,
 p,
@@ -6,148 +6,152 @@ h1,
 h2,
 h3,
 h4 {
-  /* user agent stylesheet override */
-  margin: 0;
-  padding: 0;
+    /* user agent stylesheet override */
+    margin: 0;
+    padding: 0;
 }
 
 a {
-  font-weight: 700;
-  font-family: var(--font-family-a);
-  color: var(--color-coral);
-  text-decoration: none;
+    font-weight: 700;
+    font-family: var(--font-family-a);
+    color: var(--color-coral);
+    text-decoration: none;
 }
 
 h1 {
-  font-size: var(--font-size-h1);
-  line-height: var(--line-height-h1);
-  font-weight: 900;
-  font-family: var(--font-family-h1);
-  text-transform: uppercase;
+    font-size: var(--font-size-h1);
+    line-height: var(--line-height-h1);
+    font-weight: 900;
+    font-family: var(--font-family-h1);
+    text-transform: uppercase;
 }
 
 h2 {
-  font-size: var(--font-size-h2);
-  line-height: var(--line-height-h2);
-  font-weight: 700;
-  font-family: var(--font-family-h2);
+    font-size: var(--font-size-h2);
+    line-height: var(--line-height-h2);
+    font-weight: 700;
+    font-family: var(--font-family-h2);
 }
 
 h3,
 label,
 ::placeholder {
-  font-size: var(--font-size-h3);
-  line-height: var(--line-height-h3);
-  font-weight: 700;
-  font-family: var(--font-family-h3);
+    font-size: var(--font-size-h3);
+    line-height: var(--line-height-h3);
+    font-weight: 700;
+    font-family: var(--font-family-h3);
 }
 
 ::placeholder {
-  font-weight: 400;
+    font-weight: 400;
 }
 
 h4 {
-  font-size: var(--font-size-h4);
-  line-height: var(--line-height-h4);
-  font-weight: 700;
-  font-family: var(--font-family-h4);
+    font-size: var(--font-size-h4);
+    line-height: var(--line-height-h4);
+    font-weight: 700;
+    font-family: var(--font-family-h4);
 }
 
 p {
-  font-weight: 400;
-  font-family: var(--font-family-p);
+    font-weight: 400;
+    font-family: var(--font-family-p);
 }
 
 p + p {
-  margin-top: var(--spacing-ml);
+    margin-top: var(--spacing-ml);
 }
 
 .body0 {
-  font-size: var(--font-size-body0);
-  line-height: var(--line-height-body0);
-  font-weight: 900;
-  font-family: var(--font-family-body0);
-  text-transform: uppercase;
+    font-size: var(--font-size-body0);
+    line-height: var(--line-height-body0);
+    font-weight: 900;
+    font-family: var(--font-family-body0);
+    text-transform: uppercase;
 }
 
 .body1 {
-  font-size: var(--font-size-body1);
-  line-height: var(--line-height-body1);
-  font-weight: 400;
-  font-family: var(--font-family-body1);
+    font-size: var(--font-size-body1);
+    line-height: var(--line-height-body1);
+    font-weight: 400;
+    font-family: var(--font-family-body1);
 }
 
 .body2 {
-  font-size: var(--font-size-body2);
-  line-height: var(--line-height-body2);
-  font-weight: 400;
-  font-family: var(--font-family-body2);
+    font-size: var(--font-size-body2);
+    line-height: var(--line-height-body2);
+    font-weight: 400;
+    font-family: var(--font-family-body2);
 }
 
 .body3 {
-  font-size: var(--font-size-body3);
-  line-height: var(--line-height-body3);
-  font-weight: 400;
-  font-family: var(--font-family-body3);
+    font-size: var(--font-size-body3);
+    line-height: var(--line-height-body3);
+    font-weight: 400;
+    font-family: var(--font-family-body3);
 }
 
 .body4 {
-  font-size: var(--font-size-body4);
-  line-height: var(--line-height-body4);
-  font-weight: 400;
-  font-family: var(--font-family-body4);
-  color: var(--color-grey-40);
+    font-size: var(--font-size-body4);
+    line-height: var(--line-height-body4);
+    font-weight: 400;
+    font-family: var(--font-family-body4);
+    color: var(--color-grey-40);
 }
 
 @media only screen and (max-width: 1024px) {
-  h1 {
-    font-size: var(--font-size-h1-tablet);
-    line-height: var(--line-height-h1-tablet);
-  }
+    h1 {
+        font-size: var(--font-size-h1-tablet);
+        line-height: var(--line-height-h1-tablet);
+    }
 
-  h2 {
-    font-size: var(--font-size-h2-tablet);
-    line-height: var(--line-height-h2-tablet);
-  }
+    h2 {
+        font-size: var(--font-size-h2-tablet);
+        line-height: var(--line-height-h2-tablet);
+    }
 
-  h3,
-  label,
-  ::placeholder {
-    font-size: var(--font-size-h3-tablet);
-    line-height: var(--line-height-h3-tablet);
-  }
+    h3,
+    label,
+    ::placeholder {
+        font-size: var(--font-size-h3-tablet);
+        line-height: var(--line-height-h3-tablet);
+    }
 
-  h4 {
-    font-size: var(--font-size-h4-tablet);
-    line-height: var(--line-height-h4-tablet);
-  }
+    h4 {
+        font-size: var(--font-size-h4-tablet);
+        line-height: var(--line-height-h4-tablet);
+    }
 
-  p {
-    font-size: var(--font-size-p-tablet);
-    line-height: var(--line-height-p-tablet);
-  }
+    p {
+        font-size: var(--font-size-p-tablet);
+        line-height: var(--line-height-p-tablet);
+    }
 
-  .body0 {
-    font-size: var(--font-size-body0-tablet);
-    line-height: var(--line-height-body0-tablet);
-  }
+    .body0 {
+        font-size: var(--font-size-body0-tablet);
+        line-height: var(--line-height-body0-tablet);
+    }
 
-  .body1 {
-    font-size: var(--font-size-body1-tablet);
-    line-height: var(--line-height-body1-tablet);
-  }
+    .body1 {
+        font-size: var(--font-size-body1-tablet);
+        line-height: var(--line-height-body1-tablet);
+    }
 
-  .body2 {
-    font-size: var(--font-size-body2-tablet);
-    line-height: var(--line-height-body2-tablet);
-  }
-  .body3 {
-    font-size: var(--font-size-body3-tablet);
-    line-height: var(--line-height-body3-tablet);
-  }
+    .body2 {
+        font-size: var(--font-size-body2-tablet);
+        line-height: var(--line-height-body2-tablet);
+    }
+    .body3 {
+        font-size: var(--font-size-body3-tablet);
+        line-height: var(--line-height-body3-tablet);
+    }
 
-  .body4 {
-    font-size: var(--font-size-body4-tablet);
-    line-height: var(--line-height-body4-tablet) l;
-  }
+    .body4 {
+        font-size: var(--font-size-body4-tablet);
+        line-height: var(--line-height-body4-tablet) l;
+    }
+
+    .StrikeThrough {
+        text-decoration: line-through;
+    }
 }

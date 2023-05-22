@@ -5,10 +5,6 @@ export class NavbarUtils {
             href: '/',
         },
         {
-            title: 'Config',
-            href: '/',
-        },
-        {
             title: 'About',
             href: '/',
         },

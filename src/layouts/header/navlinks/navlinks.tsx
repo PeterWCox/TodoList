@@ -5,7 +5,7 @@ export const NavLinks = () => {
         <>
             {NavbarUtils.Links?.map((navLink) => (
                 <a
-                    key={navLink.href}
+                    key={navLink.title}
                     className="body2 NavigationElement"
                     href={navLink.href}
                 >

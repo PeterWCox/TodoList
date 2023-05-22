@@ -1,11 +1,13 @@
 import { TodoItem } from '../TodoItem/TodoItem'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
-import { updateMultipleTodos } from '../../redux/todoSlice'
 import { useAppDispatch, useAppSelector } from '../../redux/hooks'
 import { Todo } from '../../models/Todo'
+import { updateCompletedTodos, updateTodos } from '../../redux/todoSlice'
 
+export type TodoListType = 'todos' | 'completedTodos'
 export interface ITodosProps {
     todos: Todo[]
+    type: TodoListType
 }
 
 export const Todos = (props: ITodosProps) => {
@@ -25,7 +27,11 @@ export const Todos = (props: ITodosProps) => {
         const items = [...props.todos]
         const [reorderedItem] = items.splice(result.source.index, 1)
         items.splice(result.destination.index, 0, reorderedItem)
-        dispatch(updateMultipleTodos(items))
+        if (props.type === 'todos') {
+            dispatch(updateTodos(items))
+        } else {
+            dispatch(updateCompletedTodos(items))
+        }
     }
 
     return (
