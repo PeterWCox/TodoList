@@ -12,7 +12,7 @@ export const Header = () => {
         <nav className="HeaderNavigation">
             <div className="HeaderContainer">
                 <div className="HeaderLeftContent">
-                    <Logo />
+                    <h1>To.do</h1>
                     <NavLinks />
                 </div>
                 {/* Button Links */}

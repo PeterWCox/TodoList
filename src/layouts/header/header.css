@@ -1,134 +1,138 @@
 .HeaderNavigation {
-  width: 100%;
-  background-color: var(--color-grey);
-  display: flex;
-  justify-content: center;
+    width: 100%;
+    background-color: var(--color-grey);
+    display: flex;
+    justify-content: center;
 }
 
 .HeaderNavigation .HeaderContainer {
-  height: 80px;
-  width: 100%;
-  max-width: 1600px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-left: var(--spacing-4xl);
-  margin-right: var(--spacing-4xl);
+    height: 80px;
+    width: 100%;
+    max-width: 1600px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: var(--spacing-4xl);
+    margin-right: var(--spacing-4xl);
 }
 
 .HeaderNavigation .HeaderLeftContent {
-  display: flex;
-  align-items: center;
-  height: 100%;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.HeaderNavigation .HeaderLeftContent h1 {
+    color: var(--color-white);
 }
 
 .HeaderNavigation .HeaderRightContent {
-  display: flex;
-  align-items: center;
-  height: 100%;
+    display: flex;
+    align-items: center;
+    height: 100%;
 }
 
 .HeaderNavigation .NavigationLogo {
-  width: 104px;
-  height: 24px;
+    width: 104px;
+    height: 24px;
 }
 
 .HeaderNavigation .NavigationElement {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  margin-left: var(--spacing-2xl);
-  font-weight: bold;
-  line-height: var(--line-height-body1);
-  color: var(--color-white);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin-left: var(--spacing-2xl);
+    font-weight: bold;
+    line-height: var(--line-height-body1);
+    color: var(--color-white);
 }
 
 .HeaderNavigation .NavigationElement:not(.NavigationElement_active):hover {
-  color: var(--color-grey-20);
+    color: var(--color-grey-20);
 }
 
 .HeaderNavigation .NavigationElement:focus-visible {
-  background-image: repeating-linear-gradient(
-      0deg,
-      var(--color-grey-20),
-      var(--color-grey-20) 5px,
-      transparent 5px,
-      transparent 12px,
-      var(--color-grey-20) 12px
-    ),
-    repeating-linear-gradient(
-      90deg,
-      var(--color-grey-20),
-      var(--color-grey-20) 5px,
-      transparent 5px,
-      transparent 12px,
-      var(--color-grey-20) 12px
-    ),
-    repeating-linear-gradient(
-      180deg,
-      var(--color-grey-20),
-      var(--color-grey-20) 5px,
-      transparent 5px,
-      transparent 12px,
-      var(--color-grey-20) 12px
-    ),
-    repeating-linear-gradient(
-      270deg,
-      var(--color-grey-20),
-      var(--color-grey-20) 5px,
-      transparent 5px,
-      transparent 12px,
-      var(--color-grey-20) 12px
-    );
-  background-size: 1px 100%, 100% 1px, 1px 100%, 100% 1px;
-  background-position: 0 0, 0 0, 100% 0, 0 100%;
-  background-repeat: no-repeat;
-  outline: none;
+    background-image: repeating-linear-gradient(
+            0deg,
+            var(--color-grey-20),
+            var(--color-grey-20) 5px,
+            transparent 5px,
+            transparent 12px,
+            var(--color-grey-20) 12px
+        ),
+        repeating-linear-gradient(
+            90deg,
+            var(--color-grey-20),
+            var(--color-grey-20) 5px,
+            transparent 5px,
+            transparent 12px,
+            var(--color-grey-20) 12px
+        ),
+        repeating-linear-gradient(
+            180deg,
+            var(--color-grey-20),
+            var(--color-grey-20) 5px,
+            transparent 5px,
+            transparent 12px,
+            var(--color-grey-20) 12px
+        ),
+        repeating-linear-gradient(
+            270deg,
+            var(--color-grey-20),
+            var(--color-grey-20) 5px,
+            transparent 5px,
+            transparent 12px,
+            var(--color-grey-20) 12px
+        );
+    background-size: 1px 100%, 100% 1px, 1px 100%, 100% 1px;
+    background-position: 0 0, 0 0, 100% 0, 0 100%;
+    background-repeat: no-repeat;
+    outline: none;
 }
 
 .HeaderNavigation
-  .NavigationElement:not(.NavigationElement_active):focus-visible {
-  background-image: repeating-linear-gradient(
-      0deg,
-      var(--color-grey-20),
-      var(--color-grey-20) 5px,
-      transparent 5px,
-      transparent 12px,
-      var(--color-grey-20) 12px
-    ),
-    repeating-linear-gradient(
-      90deg,
-      var(--color-grey-20),
-      var(--color-grey-20) 5px,
-      transparent 5px,
-      transparent 12px,
-      var(--color-grey-20) 12px
-    ),
-    repeating-linear-gradient(
-      180deg,
-      var(--color-grey-20),
-      var(--color-grey-20) 5px,
-      transparent 5px,
-      transparent 12px,
-      var(--color-grey-20) 12px
-    ),
-    repeating-linear-gradient(
-      270deg,
-      var(--color-grey-20),
-      var(--color-grey-20) 5px,
-      transparent 5px,
-      transparent 12px,
-      var(--color-grey-20) 12px
-    );
-  background-size: 1px 100%, 100% 1px, 1px 100%, 100% 1px;
-  background-position: 0 0, 0 0, 100% 0, 0 100%;
-  background-repeat: no-repeat;
-  outline: none;
+    .NavigationElement:not(.NavigationElement_active):focus-visible {
+    background-image: repeating-linear-gradient(
+            0deg,
+            var(--color-grey-20),
+            var(--color-grey-20) 5px,
+            transparent 5px,
+            transparent 12px,
+            var(--color-grey-20) 12px
+        ),
+        repeating-linear-gradient(
+            90deg,
+            var(--color-grey-20),
+            var(--color-grey-20) 5px,
+            transparent 5px,
+            transparent 12px,
+            var(--color-grey-20) 12px
+        ),
+        repeating-linear-gradient(
+            180deg,
+            var(--color-grey-20),
+            var(--color-grey-20) 5px,
+            transparent 5px,
+            transparent 12px,
+            var(--color-grey-20) 12px
+        ),
+        repeating-linear-gradient(
+            270deg,
+            var(--color-grey-20),
+            var(--color-grey-20) 5px,
+            transparent 5px,
+            transparent 12px,
+            var(--color-grey-20) 12px
+        );
+    background-size: 1px 100%, 100% 1px, 1px 100%, 100% 1px;
+    background-position: 0 0, 0 0, 100% 0, 0 100%;
+    background-repeat: no-repeat;
+    outline: none;
 }
 
 .HeaderNavigation .NavigationElement_active {
-  height: calc(100% - 4px);
-  margin-top: var(--spacing-xs);
-  border-bottom: 4px solid var(--color-green);
-  color: var(--color-green);
+    height: calc(100% - 4px);
+    margin-top: var(--spacing-xs);
+    border-bottom: 4px solid var(--color-green);
+    color: var(--color-green);
 }
