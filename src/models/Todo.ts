@@ -1,7 +1,7 @@
 export interface Todo {
     id: number
     title: string
-    isCompleted: boolean
+    isCompleted?: boolean
     tags?: TodoTag[]
 }
 

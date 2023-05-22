@@ -4,17 +4,19 @@ import { Todo } from '../models/Todo'
 
 export interface TodoState {
     todos: Todo[]
+    completedTodos: Todo[]
 }
 
 const initialState: TodoState = {
     todos: [],
+    completedTodos: [],
 }
 
 export const todoSlice = createSlice({
     name: 'todo',
     initialState,
     reducers: {
-        addTodo: (state, action: PayloadAction<string>) => {
+        addTodo: (state) => {
             state.todos = [
                 ...state.todos,
                 {
