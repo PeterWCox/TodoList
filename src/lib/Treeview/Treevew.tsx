@@ -32,6 +32,13 @@ export const Treeview = (props: ITreeViewProps) => {
         return `${node.label} (${node.children.length})`
     }
 
+    const showPointerCursor = (node: Node<string>): boolean => {
+        if (!node.children || node.children.length === 0) {
+            return false
+        }
+        return true
+    }
+
     return (
         <>
             <div
@@ -39,16 +46,23 @@ export const Treeview = (props: ITreeViewProps) => {
                     paddingLeft: '20px',
                 }}
             >
-                <span onClick={() => setShowChildren(!showChildren)}>
+                <span
+                    style={{
+                        cursor: `${
+                            showPointerCursor(props.node) ? 'pointer' : null
+                        }`,
+                    }}
+                    onClick={() => setShowChildren(!showChildren)}
+                >
                     {numberOfChildrenText(props.node)}
                 </span>
                 {showChildren
                     ? props.node.children?.map((c) => <Treeview node={c} />)
                     : null}
             </div>
-            {/* {props.isRoot ? (
+            {props.isRoot ? (
                 <div>Descendents: {getNumberOfChildren(props.node)}</div>
-            ) : null} */}
+            ) : null}
         </>
     )
 }
