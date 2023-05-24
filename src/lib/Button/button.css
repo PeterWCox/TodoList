@@ -231,6 +231,59 @@
     outline: none;
 }
 
+.Button_danger {
+    background: var(--color-red-40);
+    color: var(--color-red);
+    border: none;
+}
+
+.Button_danger:hover {
+    background: var(--color-red-40);
+}
+
+.Button_danger:active {
+    background: var(--color-red-60);
+}
+
+.Button_danger:focus-visible {
+    background-image: repeating-linear-gradient(
+            0deg,
+            var(--color-red-40),
+            var(--color-red-40) 4px,
+            transparent 4px,
+            transparent 9px,
+            var(--color-red-40) 9px
+        ),
+        repeating-linear-gradient(
+            90deg,
+            var(--color-red-40),
+            var(--color-red-40) 4px,
+            transparent 4px,
+            transparent 9px,
+            var(--color-red-40) 9px
+        ),
+        repeating-linear-gradient(
+            180deg,
+            var(--color-red-40),
+            var(--color-red-40) 4px,
+            transparent 4px,
+            transparent 9px,
+            var(--color-red-40) 9px
+        ),
+        repeating-linear-gradient(
+            270deg,
+            var(--color-red-40),
+            var(--color-red-40) 4px,
+            transparent 4px,
+            transparent 9px,
+            var(--color-red-40) 9px
+        );
+    background-size: 2px 100%, 100% 2px, 2px 100%, 100% 2px;
+    background-position: 0 0, 0 0, 100% 0, 0 100%;
+    background-repeat: no-repeat;
+    outline: none;
+}
+
 .Button_small {
     min-height: 44px;
     height: calc(100% - 44px);

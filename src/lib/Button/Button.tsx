@@ -3,7 +3,7 @@ import './button.css'
 export interface IButtonProps {
     text: string
     type: ButtonTheme
-    size: ButtonSize
+    size?: ButtonSize
     onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void
     disabled?: boolean
     isFullWidth?: boolean
@@ -16,6 +16,7 @@ export type ButtonTheme =
     | 'secondary'
     | 'tertiary'
     | 'reversedPrimary'
+    | 'danger'
 
 export const Button = (props: IButtonProps) => {
     const classes: string[] = ['Button']
@@ -30,10 +31,9 @@ export const Button = (props: IButtonProps) => {
             classes.push('Button_content_small')
             break
         case 'medium':
+        default:
             classes.push('Button_medium')
             classes.push('Button_content_medium')
-            break
-        default:
             break
     }
 
@@ -49,6 +49,9 @@ export const Button = (props: IButtonProps) => {
             break
         case 'reversedPrimary':
             classes.push('Button_reversedPrimary')
+            break
+        case 'danger':
+            classes.push('Button_danger')
             break
         default:
             break
