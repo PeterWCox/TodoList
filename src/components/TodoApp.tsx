@@ -58,12 +58,30 @@ export const TodoApp = () => {
                         <h2>Start your day off right!</h2>
 
                         {/* Test Button */}
-                        <div>
+                        <div
+                            style={{
+                                display: 'flex',
+                                gap: '1rem',
+                            }}
+                        >
                             <Button
                                 text={'Add example todos'}
                                 onClick={handleExampleTodos}
                                 type={'primary'}
-                                size={'small'}
+                            />
+                            <Button
+                                text={'Add todo'}
+                                type={'tertiary'}
+                                onClick={() => {
+                                    dispatch(addTodo())
+                                }}
+                            />
+                            <Button
+                                text={'Delete all'}
+                                type={'danger'}
+                                onClick={() => {
+                                    dispatch(addTodo())
+                                }}
                             />
                         </div>
                     </div>
@@ -110,6 +128,8 @@ export const TodoApp = () => {
                                 </div>
                             </div>
                         </div>
+
+                        <code>{JSON.stringify(todos, null, 2)}</code>
                     </div>
                     <div className="DataFilterContent">
                         {/* Todos */}
@@ -135,20 +155,6 @@ export const TodoApp = () => {
 
                                     {/* Todos */}
                                     <Todos todos={todos} type="todos" />
-
-                                    {/* Create todo */}
-                                    <div className="Row Row_spacing_l Justify_center">
-                                        <div className="Column Column_span_12">
-                                            <Button
-                                                text={'Add todo'}
-                                                type={'primary'}
-                                                size={'small'}
-                                                onClick={() => {
-                                                    dispatch(addTodo())
-                                                }}
-                                            />
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>

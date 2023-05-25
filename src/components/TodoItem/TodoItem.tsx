@@ -22,6 +22,7 @@ export interface ITodoItemProps {
 }
 
 export const TodoItem = (props: ITodoItemProps) => {
+    console.log('UPDATED', props.todo.id)
     //States
     const [title, setTitle] = useState<string>(props.todo.title)
     const [isEditMode, setIsEditMode] = useState<boolean>(false)
@@ -75,17 +76,16 @@ export const TodoItem = (props: ITodoItemProps) => {
                     }}
                 >
                     {!isEditMode ? (
-                        <h3 onClick={handleTextClick}>
-                            <span
-                                style={{
-                                    textDecoration: props.todo.isCompleted
-                                        ? 'line-through'
-                                        : 'none',
-                                    fontWeight: props.todo ? 'bold' : 'normal',
-                                }}
-                            >
-                                {title}
-                            </span>
+                        <h3
+                            onClick={handleTextClick}
+                            style={{
+                                textDecoration: props.todo.isCompleted
+                                    ? 'line-through'
+                                    : 'none',
+                                fontWeight: props.todo ? 'bold' : 'normal',
+                            }}
+                        >
+                            {title}
                         </h3>
                     ) : (
                         <OutsideClickHandler

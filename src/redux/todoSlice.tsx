@@ -31,11 +31,7 @@ export const todoSlice = createSlice({
                     isCompleted: false,
                 },
             ]
-            localStorage.setItem('todos', JSON.stringify(state.todos))
-            localStorage.setItem(
-                'completedTodos',
-                JSON.stringify(state.completedTodos)
-            )
+            updateLocalStorage(state)
         },
         addExampleTodos: (state) => {
             const todos = []
@@ -79,21 +75,12 @@ export const todoSlice = createSlice({
         },
         deleteTodo: (state, action: PayloadAction<number>) => {
             console.log(action.payload)
-            const todo = state.todos.find((todo) => todo.id === action.payload)
-            if (todo) {
-                state.todos = state.todos.filter(
-                    (todo) => todo.id !== action.payload
-                )
-            }
-
-            const completedTodo = state.completedTodos.find(
-                (todo) => todo.id === action.payload
+            state.todos = state.todos.filter(
+                (todo) => todo.id !== action.payload
             )
-            if (completedTodo) {
-                state.completedTodos = state.completedTodos.filter(
-                    (todo) => todo.id !== action.payload
-                )
-            }
+            state.completedTodos = state.completedTodos.filter(
+                (todo) => todo.id !== action.payload
+            )
 
             localStorage.setItem('todos', JSON.stringify(state.todos))
             localStorage.setItem(
